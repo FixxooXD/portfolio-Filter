@@ -12,6 +12,10 @@ function App() {
   const [catItems, setCatItems] = useState(allCat)
 
   const handleFilter = (cat) =>{
+    if(cat === "all"){
+      setItems(Menu)
+      return;
+    }
       const updateItems = Menu.filter(elem => {
         return elem.category === cat ;
       })
@@ -24,7 +28,7 @@ function App() {
       {/* {console.log(Menu)} */}
       <div className="w-full flex flex-col justify-center items-center p-5">
         <h1 className="text-2xl font-semibold">Order Your Fav Dish</h1>
-        <FilterBtn handleFilter={handleFilter} allCat={allCat} />
+        <FilterBtn handleFilter={handleFilter} allCat={catItems}/>
 
         <div className="flex flex-wrap p-12 justify-between">
           {items.map((elem) => (
